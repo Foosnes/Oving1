@@ -4,6 +4,9 @@ import android.graphics.Canvas;
 import android.util.Log;
 import android.view.LayoutInflater;
 
+import java.util.List;
+
+import sheep.game.Game;
 import sheep.game.Layer;
 import sheep.graphics.SpriteView;
 import sheep.math.BoundingBox;
@@ -15,11 +18,13 @@ import sheep.math.BoundingBox;
 public class GameLayer extends Layer {
 
     private static String TAG = "GameLayer: ";
+    private Game game;
 
     Helicopter helicopter;
 
-    public GameLayer(){
+    public GameLayer(List<MainActivity.SizeListener> sizeListeners){
         helicopter = new Helicopter();
+        sizeListeners.add(helicopter);
     }
 
     @Override
@@ -30,7 +35,6 @@ public class GameLayer extends Layer {
 
     @Override
     public void draw(Canvas canvas, BoundingBox boundingBox) {
-        helicopter.setBoundingBox(boundingBox);
         helicopter.draw(canvas);
     }
 }
