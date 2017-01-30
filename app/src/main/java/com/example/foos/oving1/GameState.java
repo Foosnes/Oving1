@@ -17,16 +17,11 @@ public class GameState extends State {
 
     World world;
     GameLayer layer;
-    CollisionLayer collisionLayer;
 
     public GameState(){
         world = new World();
         layer = new GameLayer();
         world.addLayer(layer);
-
-
-        getGame().getWidth();
-        getGame().getHeight();
     }
 
     @Override

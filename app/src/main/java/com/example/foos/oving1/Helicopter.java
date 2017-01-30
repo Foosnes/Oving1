@@ -2,6 +2,7 @@ package com.example.foos.oving1;
 
 import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.util.Log;
 
 import sheep.game.Sprite;
 import sheep.graphics.Image;
@@ -21,16 +22,16 @@ import static com.example.foos.oving1.Helicopter.COLLISION_DIR.NONE;
 
 public class Helicopter extends Sprite {
 
-    private COLLISION_DIR[] COLLISSIONS = {LEFT, RIGHT, TOP, BOTTOM, NONE};
+    private String TAG = "Helicopter: ";
 
-    private float xPos = 0;
-    private float yPos = 0;
+    private float xPos = 200;
+    private float yPos = 200;
 
-    private float xChange = 3;
-    private float yChange = 3;
+    private float xChange = 3f;
+    private float yChange = 3f;
 
-    private float[] heliPoints;
-    private float[] screenPoints;
+    private float[] heliPoints = {};
+    private float[] screenPoints = {};
     private BoundingBox screenBox;
 
     public Helicopter () {
@@ -55,6 +56,8 @@ public class Helicopter extends Sprite {
     public void setBoundingBox(BoundingBox box){
         this.screenBox = box;
         screenPoints = box.getPoints();
+        Log.w(TAG, String.format("ScreenBox %f %f %f %f ",screenPoints[0],screenPoints[1],screenPoints[2],screenPoints[3]));
+        Log.w(TAG, "ScreenBox is set");
     }
 
     public void reactToCollision(COLLISION_DIR collision){
@@ -77,23 +80,32 @@ public class Helicopter extends Sprite {
     }
 
     public COLLISION_DIR getCollision(){
+        if(heliPoints.length == 0){
+            //Log.w(TAG, "Helipoints not set");
+            return NONE;
+        }
+        if(screenPoints.length == 0){
+            Log.w(TAG, "ScreenPoints not set");
+            return NONE;
+        }
+
         if(heliPoints[0] < screenPoints[0]){
-            return COLLISION_DIR.LEFT;
+            return LEFT;
         }
 
         if(heliPoints[1] > screenPoints[1]){
-            return COLLISION_DIR.RIGHT;
+            return RIGHT;
         }
 
         if(heliPoints[2] < screenPoints[2]){
-            return COLLISION_DIR.TOP;
+            return TOP;
         }
 
         if(heliPoints[3] > screenPoints[3]){
-            return COLLISION_DIR.LEFT;
+            return BOTTOM;
         }
 
-        return COLLISION_DIR.NONE;
+        return NONE;
     }
 
     public enum COLLISION_DIR {

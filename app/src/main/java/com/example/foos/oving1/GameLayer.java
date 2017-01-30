@@ -25,7 +25,7 @@ public class GameLayer extends Layer {
     @Override
     public void update(float v) {
         helicopter.update(v);
-        Log.w(TAG, "update called");
+        //Log.w(TAG, "update called");
     }
 
     @Override
