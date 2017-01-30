@@ -14,24 +14,22 @@ import sheep.math.BoundingBox;
 public class GameState extends State {
 
     World world;
-    Layer layer;
-
+    GameLayer layer;
 
     public GameState(){
         world = new World();
-        layer = new Layer() {
-            @Override
-            public void update(float v) {
+        layer = new GameLayer();
+        world.addLayer(layer);
+    }
 
-            }
+    @Override
+    public void draw(Canvas canvas){
+        world.draw(canvas);
+    }
 
-            @Override
-            public void draw(Canvas canvas, BoundingBox boundingBox) {
-
-            }
-        };
-
-
+    @Override
+    public void update(float dt){
+        world.update(dt);
     }
 
 }

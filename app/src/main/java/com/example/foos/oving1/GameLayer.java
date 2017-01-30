@@ -1,6 +1,7 @@
 package com.example.foos.oving1;
 
 import android.graphics.Canvas;
+import android.util.Log;
 import android.view.LayoutInflater;
 
 import sheep.game.Layer;
@@ -13,19 +14,22 @@ import sheep.math.BoundingBox;
 
 public class GameLayer extends Layer {
 
-    SpriteView helicopter;
+    private static String TAG = "GameLayer: ";
+
+    Helicopter helicopter;
 
     public GameLayer(){
-
+        helicopter = new  Helicopter();
     }
 
     @Override
     public void update(float v) {
-
+        helicopter.update(v);
+        Log.w(TAG, "update called");
     }
 
     @Override
     public void draw(Canvas canvas, BoundingBox boundingBox) {
-
+        helicopter.draw(canvas);
     }
 }
