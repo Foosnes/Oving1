@@ -46,8 +46,8 @@ public class Helicopter extends Sprite {
         COLLISION_DIR collisionDirection = getCollision();
         reactToCollision(collisionDirection);
 
-        xPos += 3f;
-        yPos += 3f;
+        xPos += xChange;
+        yPos += yChange;
 
         setPosition(xPos, yPos);
     }
