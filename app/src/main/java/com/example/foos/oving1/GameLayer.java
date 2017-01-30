@@ -19,7 +19,7 @@ public class GameLayer extends Layer {
     Helicopter helicopter;
 
     public GameLayer(){
-        helicopter = new  Helicopter();
+        helicopter = new Helicopter();
     }
 
     @Override
@@ -30,6 +30,7 @@ public class GameLayer extends Layer {
 
     @Override
     public void draw(Canvas canvas, BoundingBox boundingBox) {
+        helicopter.setBoundingBox(boundingBox);
         helicopter.draw(canvas);
     }
 }
