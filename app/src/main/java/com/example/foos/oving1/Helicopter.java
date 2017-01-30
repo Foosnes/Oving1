@@ -22,8 +22,13 @@ import static com.example.foos.oving1.Helicopter.COLLISION_DIR.NONE;
 public class Helicopter extends Sprite {
 
     private COLLISION_DIR[] COLLISSIONS = {LEFT, RIGHT, TOP, BOTTOM, NONE};
+
     private float xPos = 0;
     private float yPos = 0;
+
+    private float xChange = 3;
+    private float yChange = 3;
+
     private float[] heliPoints;
     private float[] screenPoints;
     private BoundingBox screenBox;
@@ -38,7 +43,8 @@ public class Helicopter extends Sprite {
     public void update(float dt){
         super.update(dt);
 
-        COLLISION_DIR collision = getCollision();
+        COLLISION_DIR collisionDirection = getCollision();
+        reactToCollision(collisionDirection);
 
         xPos += 3f;
         yPos += 3f;
@@ -51,7 +57,24 @@ public class Helicopter extends Sprite {
         screenPoints = box.getPoints();
     }
 
-    public
+    public void reactToCollision(COLLISION_DIR collision){
+        switch (collision){
+            case TOP:
+                yChange = -yChange;
+                return;
+            case BOTTOM:
+                yChange = -yChange;
+                return;
+            case LEFT:
+                xChange = -xChange;
+                return;
+            case RIGHT:
+                xChange = -xChange;
+                return;
+            default:
+                return;
+        }
+    }
 
     public COLLISION_DIR getCollision(){
         if(heliPoints[0] < screenPoints[0]){
