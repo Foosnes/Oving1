@@ -9,6 +9,7 @@ import java.util.List;
 import sheep.game.Game;
 import sheep.game.Layer;
 import sheep.graphics.SpriteView;
+import sheep.input.TouchListener;
 import sheep.math.BoundingBox;
 
 /**
@@ -22,9 +23,10 @@ public class GameLayer extends Layer {
 
     Helicopter helicopter;
 
-    public GameLayer(List<MainActivity.SizeListener> sizeListeners){
+    public GameLayer(List<MainActivity.SizeListener> sizeListeners, List<TouchListener> touchListeners){
         helicopter = new Helicopter();
         sizeListeners.add(helicopter);
+        touchListeners.add(helicopter);
     }
 
     @Override

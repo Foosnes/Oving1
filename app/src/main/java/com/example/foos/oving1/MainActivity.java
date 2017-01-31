@@ -12,10 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import sheep.game.Game;
-import sheep.game.Sprite;
-import sheep.game.State;
-import sheep.graphics.Image;
-import sheep.graphics.SpriteView;
 
 
 public class MainActivity extends AppCompatActivity {
