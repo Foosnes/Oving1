@@ -2,19 +2,11 @@ package com.example.foos.oving1;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.media.MediaPlayer;
-import android.util.Log;
-import android.util.Size;
 import android.view.MotionEvent;
-import android.view.SurfaceView;
-import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import sheep.collision.CollisionLayer;
-import sheep.game.Game;
-import sheep.game.Layer;
 import sheep.game.State;
 import sheep.game.World;
 import sheep.input.TouchListener;

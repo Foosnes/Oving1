@@ -1,20 +1,14 @@
 package com.example.foos.oving1;
 
-import android.graphics.Canvas;
-import android.graphics.Matrix;
 import android.util.Log;
 import android.view.MotionEvent;
 
-import sheep.collision.Interval;
 import sheep.collision.Rectangle;
 import sheep.collision.Shape;
-import sheep.game.Game;
 import sheep.game.Sprite;
 import sheep.graphics.Image;
-import sheep.graphics.SpriteView;
 import sheep.input.TouchListener;
 import sheep.math.BoundingBox;
-import sheep.math.Vector2;
 
 import static com.example.foos.oving1.Helicopter.COLLISION_DIR.BOTTOM;
 import static com.example.foos.oving1.Helicopter.COLLISION_DIR.LEFT;
@@ -49,6 +43,8 @@ public class Helicopter extends Sprite implements MainActivity.SizeListener, Tou
         shape = new Rectangle(img.getWidth(), img.getHeight());
         setShape(shape);
 
+        setSpeed(xChange,yChange);
+
     }
 
     @Override
@@ -58,8 +54,9 @@ public class Helicopter extends Sprite implements MainActivity.SizeListener, Tou
         COLLISION_DIR collisionDirection = getCollision(screenSquare);
         reactToCollision(collisionDirection);
 
-        xPos += xChange;
-        yPos += yChange;
+
+        xPos += getSpeed().getX();
+        yPos += getSpeed().getY();
 
         setPosition(xPos,yPos);
     }
@@ -67,44 +64,44 @@ public class Helicopter extends Sprite implements MainActivity.SizeListener, Tou
     public void reactToCollision(COLLISION_DIR collision){
         switch (collision){
             case TOP:
-                yChange = -yChange;
+                setYSpeed(- getSpeed().getY());
                 return;
             case BOTTOM:
-                yChange = -yChange;
+                setYSpeed(- getSpeed().getY());
                 return;
             case LEFT:
-                xChange = -xChange;
+                setXSpeed(- getSpeed().getX());
                 return;
             case RIGHT:
-                xChange = -xChange;
+                setXSpeed(- getSpeed().getX());
                 return;
             default:
                 return;
         }
     }
 
-    public COLLISION_DIR getCollision(float[] collisionSquare){
-        if(collisionSquare.length == 0){
+    public COLLISION_DIR getCollision(float[] boundingSquare){
+        if(boundingSquare.length == 0){
             Log.w(TAG, "CollisionSqaure not set");
             return NONE;
         }
 
-        if(getX() - img.getWidth()/2 < collisionSquare[0]){
+        if(getX() - img.getWidth()/2 < boundingSquare[0]){
             Log.w(TAG, "LEFT COLLISION");
             return LEFT;
         }
 
-        if(getX() + img.getWidth()/2 > collisionSquare[1]){
+        if(getX() + img.getWidth()/2 > boundingSquare[1]){
             Log.w(TAG, "RIGHT COLLISION");
             return RIGHT;
         }
 
-        if(getY() - img.getHeight()/2 < collisionSquare[2]){
+        if(getY() - img.getHeight()/2 < boundingSquare[2]){
             Log.w(TAG, "TOP COLLISION");
             return TOP;
         }
 
-        if(getY() + img.getHeight()/2 > collisionSquare[3]){
+        if(getY() + img.getHeight()/2 > boundingSquare[3]){
             Log.w(TAG, "BOTTOM COLLISION");
             return BOTTOM;
         }
@@ -146,10 +143,10 @@ public class Helicopter extends Sprite implements MainActivity.SizeListener, Tou
             return false;
         }
 
-
         Log.w(TAG, "TOUCHED");
 
-        setPosition(motionEvent.getX(), motionEvent.getY());
+        xPos = motionEvent.getX();
+        yPos = motionEvent.getY();
 
         return true;
     }

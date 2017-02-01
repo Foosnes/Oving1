@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Size;
 
+import com.example.foos.oving1.pong.PongState;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,23 +18,23 @@ import sheep.game.Game;
 
 public class MainActivity extends AppCompatActivity {
 
-    Game game;
+    FixedGame game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         game = new FixedGame(this, null);
-        GameState state = new GameState();
+        PongState state = new PongState(game.listeners);
 
         game.pushState(state);
 
         setContentView(game);
-        state.init();
+        //state.init();
 
     }
-
-    class FixedGame extends Game {
+    /*  */
+    public class FixedGame extends Game {
 
         public List<SizeListener> listeners;
 
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    interface SizeListener {
+    public interface SizeListener {
         void onSizeChanged(int width, int height);
     }
 
