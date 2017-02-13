@@ -1,13 +1,10 @@
-package com.example.foos.oving1.animatedSprites;
+package com.example.foos.oving1.pong.animatedSprites;
 
 import android.graphics.Canvas;
 import android.graphics.Matrix;
-import android.view.MotionEvent;
-import android.view.animation.OvershootInterpolator;
 
 import com.example.foos.oving1.R;
 
-import sheep.game.Sprite;
 import sheep.graphics.Image;
 import sheep.graphics.SpriteView;
 
@@ -15,7 +12,7 @@ import sheep.graphics.SpriteView;
  * Created by Sigurd on 31.01.2017.
  */
 
-public class Helicopter extends com.example.foos.oving1.Helicopter{
+public class Helicopter extends com.example.foos.oving1.helicopterExcercise.Helicopter {
 
     SpriteView[] keyFrames = new SpriteView[4];
     int keyFrameIndex = 0;

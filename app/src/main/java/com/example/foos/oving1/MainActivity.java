@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Size;
 
+import com.example.foos.oving1.mvcPong.controllers.GameController;
 import com.example.foos.oving1.pong.PongState;
 
 import java.util.ArrayList;
@@ -25,7 +26,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         game = new FixedGame(this, null);
-        PongState state = new PongState(game.listeners);
+
+        /* This is code for assignment 1 */
+        //PongState state = new PongState(game.listeners);
+
+        /* This is code for assignment 2, pattern excercise */
+        GameController state = new GameController(game.listeners);
 
         game.pushState(state);
 

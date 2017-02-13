@@ -1,19 +1,18 @@
-package com.example.foos.oving1;
+package com.example.foos.oving1.helicopterExcercise;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.util.Log;
-import android.view.LayoutInflater;
 
 import java.util.List;
 
 import sheep.game.Game;
 import sheep.game.Layer;
-import sheep.graphics.SpriteView;
 import sheep.input.TouchListener;
 import sheep.math.BoundingBox;
-import com.example.foos.oving1.animatedSprites.Helicopter;
+
+import com.example.foos.oving1.MainActivity;
+import com.example.foos.oving1.pong.animatedSprites.Helicopter;
 /**
  * Created by Sigurd on 30.01.2017.
  */

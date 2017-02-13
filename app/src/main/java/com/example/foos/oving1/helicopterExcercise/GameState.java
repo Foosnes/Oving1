@@ -1,8 +1,11 @@
-package com.example.foos.oving1;
+package com.example.foos.oving1.helicopterExcercise;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.view.MotionEvent;
+
+import com.example.foos.oving1.MainActivity;
+import com.example.foos.oving1.helicopterExcercise.GameLayer;
 
 import java.util.ArrayList;
 import java.util.List;

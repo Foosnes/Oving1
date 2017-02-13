@@ -1,7 +1,10 @@
-package com.example.foos.oving1;
+package com.example.foos.oving1.helicopterExcercise;
 
 import android.util.Log;
 import android.view.MotionEvent;
+
+import com.example.foos.oving1.MainActivity;
+import com.example.foos.oving1.R;
 
 import sheep.collision.Rectangle;
 import sheep.collision.Shape;
@@ -10,11 +13,11 @@ import sheep.graphics.Image;
 import sheep.input.TouchListener;
 import sheep.math.BoundingBox;
 
-import static com.example.foos.oving1.Helicopter.COLLISION_DIR.BOTTOM;
-import static com.example.foos.oving1.Helicopter.COLLISION_DIR.LEFT;
-import static com.example.foos.oving1.Helicopter.COLLISION_DIR.RIGHT;
-import static com.example.foos.oving1.Helicopter.COLLISION_DIR.TOP;
-import static com.example.foos.oving1.Helicopter.COLLISION_DIR.NONE;
+import static com.example.foos.oving1.helicopterExcercise.Helicopter.COLLISION_DIR.BOTTOM;
+import static com.example.foos.oving1.helicopterExcercise.Helicopter.COLLISION_DIR.LEFT;
+import static com.example.foos.oving1.helicopterExcercise.Helicopter.COLLISION_DIR.RIGHT;
+import static com.example.foos.oving1.helicopterExcercise.Helicopter.COLLISION_DIR.TOP;
+import static com.example.foos.oving1.helicopterExcercise.Helicopter.COLLISION_DIR.NONE;
 
 
 /**
