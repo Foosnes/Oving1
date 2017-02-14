@@ -14,12 +14,12 @@ public class Wall extends Model {
         this.direction = direction;
 
         if(direction == Dir.West || direction == Dir.East){
-            width = 10;
+            width = 5;
             length = 200;
         }
         else{
             width = 200;
-            length = 10;
+            length = 5;
         }
     }
 

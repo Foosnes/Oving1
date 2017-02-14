@@ -11,30 +11,35 @@ import java.util.List;
 
 public abstract class Model {
 
-    private static String TAG = "Model";
+    private String TAG = this.getClass().getSimpleName();
 
-    public List<ModelListener> listeners = new ArrayList<>();
-    public float x;
-    public float y;
+    private float oldX;
+    private float oldY;
+    private float x;
+    private float y;
 
     public void setPos(float x, float y){
+        this.oldX = x;
+        this.oldY = y;
         this.x = x;
         this.y = y;
 
-        this.propagateChange();
     }
 
-    /**
-     * Tell all listeners about change in model
-     */
-    public void propagateChange(){
-        Log.w(TAG, "Propagating changes");
-        for (ModelListener listener: listeners) {
-            listener.onModelChanged(this);
-        }
+    public float getOldX() {
+        return oldX;
     }
 
-    public interface ModelListener {
-        void onModelChanged(Model model);
+    public float getOldY() {
+        return oldY;
     }
+
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
 }

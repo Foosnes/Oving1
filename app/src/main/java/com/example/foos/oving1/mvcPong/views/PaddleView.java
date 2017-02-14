@@ -16,19 +16,18 @@ public class PaddleView extends ModelView {
 
     Paint paint;
 
-    public PaddleView(Paddle paddle, Canvas canvas){
-        super(paddle, canvas);
+    public PaddleView(Paddle paddle){
+        super(paddle);
         paint = new Paint();
         paint.setColor(Color.WHITE);
     }
 
-    @Override
-    public void draw() {
-        float left = this.model.x;
-        float top = this.model.y;
+    public void draw(Canvas canvas) {
+        float left = this.model.getX();
+        float top = this.model.getY();
         float right = left + ((Paddle)this.model).width;
         float bottom = top + ((Paddle)this.model).length;
 
-        this.canvas.drawRect(left, top, right, bottom, paint);
+        canvas.drawRect(left, top, right, bottom, paint);
     }
 }
